@@ -1,0 +1,51 @@
+/* Home.css */
+.bg-gray-50 {
+    background-color: #f9fafb;
+    transition: background-color 0.3s ease;
+}
+
+.dark-theme {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.app-container {
+    display: flex;
+    min-height: calc(100vh - 64px); /* Adjust based on navbar height */
+    position: relative;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    transition: margin-left 0.3s ease;
+    width: 100%;
+}
+
+.main-content.sidebar-open {
+    margin-left: 250px; /* Adjust based on sidebar width */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 1rem;
+    }
+
+    .main-content.sidebar-open {
+        margin-left: 0;
+    }
+}
+
+/* Animation for theme transition */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Container max-width for larger screens */
+@media (min-width: 1280px) {
+    .app-container {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+} 

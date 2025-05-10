@@ -1,0 +1,272 @@
+.face-verification {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--surface-color);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.verification-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.verification-header h2 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.verification-header p {
+  color: var(--text-secondary);
+}
+
+.verification-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.camera-section,
+.pan-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.camera-section h3,
+.pan-section h3 {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.camera-container,
+.pan-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  background-color: var(--background-color);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.camera-placeholder,
+.pan-placeholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+}
+
+.camera-icon,
+.pan-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.camera-feed,
+.captured-image,
+.pan-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.captured-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.camera-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.face-outline {
+  width: 200px;
+  height: 200px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.3);
+}
+
+.start-button,
+.capture-button,
+.stop-button,
+.retake-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.start-button {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.start-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.capture-button {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.capture-button:hover {
+  background-color: #16a34a;
+}
+
+.capture-button:disabled {
+  background-color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+.stop-button {
+  background-color: var(--error-color);
+  color: white;
+}
+
+.stop-button:hover {
+  background-color: #dc2626;
+}
+
+.stop-button:disabled {
+  background-color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+.retake-button {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.retake-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.verification-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.error-message {
+  background-color: var(--error-color);
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.verification-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.verification-status.success {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.verification-status.failed {
+  background-color: var(--error-color);
+  color: white;
+}
+
+.status-icon {
+  font-size: 1.25rem;
+}
+
+/* Loading State */
+.capture-button:disabled {
+  position: relative;
+  color: transparent;
+}
+
+.capture-button:disabled::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .verification-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .camera-container,
+  .pan-container {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .face-verification {
+    padding: 1rem;
+  }
+
+  .verification-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .camera-container,
+  .pan-container {
+    aspect-ratio: 3/4;
+  }
+
+  .face-outline {
+    width: 150px;
+    height: 150px;
+  }
+} 
